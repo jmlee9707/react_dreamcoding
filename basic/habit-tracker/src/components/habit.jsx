@@ -1,29 +1,21 @@
 import React, { Component } from "react";
 
 class Habit extends Component {
-  state = {
-    count: 0,
-  };
   // handleIncrement라는 멤버변수는 화살표 함수를 가리키고 있음
   handleIncrement = () => {
-    // react component에서 제공하는 함수를 이용
-
-    //state 오브젝트 안에 있는 count를 증가한 뒤 state를 업데이트 한다
-    this.setState({ count: this.state.count + 1 });
-    // count = this.state.count +1; 로 사용할 수 없는 이유는
-    // 위의 방법처럼 사용하게 되면 리액트는 업데이트가 되었는지 안되었는지 모르기 때문에
-    // 꼭 state를 업데이트 할 때에는 setState 함수를 호출해 주어야 한다.
+    this.props.onIncrement(this.props.habit);
   };
   handleDecrement = () => {
-    const count = this.state.count - 1;
-    this.setState({
-      count: count < 0 ? 0 : count,
-    });
+    this.props.onDecrement(this.props.habit);
+  };
+  handleDelete = () => {
+    this.props.onDelete(this.props.habit);
   };
 
   render() {
     // console.log(this.props);
     // const habitName = this.props.habit.name;
+    // Habit은 외부에서 props로 전달받은 습관, Habit이라는 오브젝트의 데이터를 보여주기만 하는 컴포넌트
     const { name, count } = this.props.habit; //
     return (
       <li className="habit">
@@ -41,7 +33,10 @@ class Habit extends Component {
         >
           <i className="fa-solid fa-circle-minus"></i>
         </button>
-        <button className="habit-button habit-delete">
+        <button
+          className="habit-button habit-delete"
+          onClick={this.handleDelete}
+        >
           <i className="fa-solid fa-trash"></i>
         </button>
       </li>
