@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/react_dreamcoding/static/css/main.7903383d.css",
+    "main.js": "/react_dreamcoding/static/js/main.d26aed8e.js",
+    "index.html": "/react_dreamcoding/index.html",
+    "main.7903383d.css.map": "/react_dreamcoding/static/css/main.7903383d.css.map",
+    "main.d26aed8e.js.map": "/react_dreamcoding/static/js/main.d26aed8e.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7903383d.css",
+    "static/js/main.d26aed8e.js"
+  ]
+}
