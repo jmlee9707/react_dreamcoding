@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Habit from "./habit";
 import HabitAddForm from "./habitAddForm";
+
 class Habits extends Component {
   // 해당하는 습관을 인자로 받아와야 함
   handleIncrement = (habit) => {
@@ -9,14 +10,15 @@ class Habits extends Component {
   handleDecrement = (habit) => {
     this.props.onDecrement(habit);
   };
-  // handleDelete = (habit) => {
-  //   this.props.onDelete(habit);
-  // };
+  handleDelete = (habit) => {
+    this.props.onDelete(habit);
+  };
   handleAdd = (name) => {
     this.props.onAdd(name);
   };
 
   render() {
+    console.log("habits");
     return (
       <>
         <HabitAddForm onAdd={this.handleAdd} />
@@ -30,9 +32,7 @@ class Habits extends Component {
               habit={habit}
               onIncrement={this.handleIncrement}
               onDecrement={this.handleDecrement}
-              onDelete={(habit) => {
-                this.handleDelete(habit);
-              }} // 이렇게 쓰면 안되는 경우가 존재
+              onDelete={this.handleDelete}
             />
             // key는 고유한 키, 배열의 인덱스는 절대 사용하면 안됨
           ))}

@@ -1,6 +1,13 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 
-class Habit extends Component {
+class Habit extends PureComponent {
+  // componentDidMount() {
+  //   console.log(`habit : ${this.props.habit.name} mounted`);
+  // }
+  // componentWillUnmount() {
+  //   console.log(`habit  : ${this.props.habit.name} will unmount`);
+  // }
+
   // handleIncrement라는 멤버변수는 화살표 함수를 가리키고 있음
   handleIncrement = () => {
     this.props.onIncrement(this.props.habit);
@@ -17,6 +24,7 @@ class Habit extends Component {
     // const habitName = this.props.habit.name;
     // Habit은 외부에서 props로 전달받은 습관, Habit이라는 오브젝트의 데이터를 보여주기만 하는 컴포넌트
     const { name, count } = this.props.habit; //
+    console.log(`habit: ${name}`);
     return (
       <li className="habit">
         <span className="habit-name">{name}</span>

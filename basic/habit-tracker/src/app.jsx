@@ -19,14 +19,22 @@ class App extends Component {
     // habit.count++;
     // this.setState(this.state);
 
-    const habits = [...this.state.habits];
-    // spread operator :
-    // 기존의 배열 안에 있는 아이템들을 하나하나씩 새로운 배열 안으로 복사해오는 것을 의미
-    const index = habits.indexOf(habit);
-    habits[index].count++;
-    //key : habits, value : local에서 만든 habits 배열
-    // key와 value가 동일한 경우에는 하나로 생략이 가능
-    this.setState({ habits: habits });
+    // const habits = [...this.state.habits];
+    // // spread operator :
+    // // 기존의 배열 안에 있는 아이템들을 하나하나씩 새로운 배열 안으로 복사해오는 것을 의미
+    // const index = habits.indexOf(habit);
+    // habits[index].count++;
+    // //key : habits, value : local에서 만든 habits 배열
+    // // key와 value가 동일한 경우에는 하나로 생략이 가능
+    // this.setState({ habits });
+
+    const habits = this.state.habits.map((item) => {
+      if (item.id === habit.id) {
+        return { ...habit, count: habit.count + 1 };
+      }
+      return item;
+    });
+    this.setState({ habits });
   };
   handleDecrement = (habit) => {
     const habits = [...this.state.habits];
@@ -38,7 +46,6 @@ class App extends Component {
   handleDelete = (habit) => {
     // 전달받은 habit을 배열에서 삭제
     //filter API 사용, 전달받은 habit을 제외한 새로운 배열 만들기
-
     const habits = this.state.habits.filter((item) => item.id !== habit.id);
     this.setState({ habits });
   };
@@ -54,6 +61,7 @@ class App extends Component {
     this.setState({ habits });
   };
 
+  // UI 정의 부분
   render() {
     return (
       <>
